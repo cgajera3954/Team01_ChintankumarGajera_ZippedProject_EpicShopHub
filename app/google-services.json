@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "954204164960",
+    "project_id": "epicshophub-finalproject",
+    "storage_bucket": "epicshophub-finalproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954204164960:android:32e2a848386c49b1c90405",
+        "android_client_info": {
+          "package_name": "com.example.team01_chintankumargajera_zippedproject_epicshophub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZIEw0ddLQFpo2HPjBUf7d_5zgSbawYXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
