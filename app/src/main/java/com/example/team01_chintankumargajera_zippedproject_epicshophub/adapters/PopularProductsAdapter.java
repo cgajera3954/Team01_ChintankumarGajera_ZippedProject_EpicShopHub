@@ -1,6 +1,7 @@
 package com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.activities.DetailedActivity;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.PopularProductsModel;
 
+import java.io.ObjectInputStream;
 import java.util.List;
 
 public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProductsAdapter.ViewHolder> {
@@ -39,6 +42,20 @@ public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProducts
         Glide.with(context).load(model.getImg_url()).into(holder.popularImg);
         holder.popularName.setText(model.getName());
         holder.popularPrice.setText(String.valueOf(model.getPrice()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, DetailedActivity.class);
+
+                intent.putExtra("detailed", model);
+                context.startActivity(intent);
+
+            }
+        });
+
+
     }
 
     @Override

@@ -1,29 +1,26 @@
 package com.example.team01_chintankumargajera_zippedproject_epicshophub.models;
 
-import java.io.Serializable;
+public class ShowAllModel {
+    String description;
+    String name;
+    String rating;
+    int price;
+    String img_url;
+    String type;
 
-public class PopularProductsModel implements Serializable {
-
-    private String description;
-    private String name;
-    private String rating;
-    private int price;
-    private String img_url;
-
-    // No-argument constructor (required for Firebase)
-    public PopularProductsModel() {
+    // Add a no-argument constructor
+    public ShowAllModel() {
+        // Default constructor required for Firestore
     }
 
-    // Constructor with arguments
-    public PopularProductsModel(String description, String name, String rating, int price, String img_url) {
+    public ShowAllModel(String description, String name, String rating, int price, String img_url, String type) {
         this.description = description;
         this.name = name;
         this.rating = rating;
         this.price = price;
         this.img_url = img_url;
+        this.type = type;
     }
-
-    // Getters and Setters
     public String getDescription() {
         return description;
     }
@@ -62,5 +59,13 @@ public class PopularProductsModel implements Serializable {
 
     public void setImg_url(String img_url) {
         this.img_url = img_url;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
