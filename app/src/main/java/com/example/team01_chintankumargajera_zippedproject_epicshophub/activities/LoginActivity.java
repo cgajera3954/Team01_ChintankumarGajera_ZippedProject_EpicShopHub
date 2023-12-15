@@ -1,4 +1,4 @@
-package com.example.team01_chintankumargajera_zippedproject_epicshophub;
+package com.example.team01_chintankumargajera_zippedproject_epicshophub.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
