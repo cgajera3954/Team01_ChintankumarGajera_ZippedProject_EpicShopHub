@@ -18,6 +18,16 @@
         android:scaleType="centerCrop" />
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detailed_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8ff7fd"
+        app:title="Product Detailed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <androidx.cardview.widget.CardView
         android:translationY="-50dp"
         android:id="@+id/cardview"

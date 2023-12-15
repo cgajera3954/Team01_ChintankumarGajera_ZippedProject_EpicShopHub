@@ -2,6 +2,7 @@ package com.example.team01_chintankumargajera_zippedproject_epicshophub.activiti
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,8 @@ public class ShowAllActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ShowAllAdapter showAllAdapter;
+
+    Toolbar toolbar;
     List<ShowAllModel> showAllModelList;
     FirebaseFirestore firestore;
 
@@ -32,6 +35,10 @@ public class ShowAllActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_all);
 
         firestore = FirebaseFirestore.getInstance();
+
+        toolbar = findViewById(R.id.show_all_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = findViewById(R.id.show_all_rec);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -55,4 +62,9 @@ public class ShowAllActivity extends AppCompatActivity {
                     }
                 });
     }
-}
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }}

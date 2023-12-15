@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Team01_ChintankumarGajera_ZippedProject_EpicShopHub" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.Team01_ChintankumarGajera_ZippedProject_EpicShopHub" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <!-- Primary Brand Color -->
