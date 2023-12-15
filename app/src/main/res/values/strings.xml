@@ -6,4 +6,6 @@
     <string name="third_slide">Good Services</string>
 
     <string name="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

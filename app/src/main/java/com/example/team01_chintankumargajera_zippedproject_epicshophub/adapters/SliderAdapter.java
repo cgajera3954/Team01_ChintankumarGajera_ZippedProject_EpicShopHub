@@ -1,4 +1,4 @@
-package com.example.team01_chintankumargajera_zippedproject_epicshophub;
+package com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
 
 public class SliderAdapter extends PagerAdapter {
 

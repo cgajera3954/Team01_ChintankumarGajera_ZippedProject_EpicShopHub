@@ -1,4 +1,4 @@
-package com.example.team01_chintankumargajera_zippedproject_epicshophub;
+package com.example.team01_chintankumargajera_zippedproject_epicshophub.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -12,10 +12,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextClock;
 import android.widget.TextView;
 
-import com.google.android.material.slider.Slider;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters.SliderAdapter;
 
 public class OnBoardingActivity extends AppCompatActivity {
 
