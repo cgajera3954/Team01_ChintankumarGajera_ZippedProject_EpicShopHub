@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Team01_ChintankumarGajera_ZippedProject_EpicShopHub</string>
+
+    <string name="first_slide">Choose your Product</string>
+    <string name="second_slide">Fast Delivery</string>
+    <string name="third_slide">Good Services</string>
+
+    <string name="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
 </resources>
