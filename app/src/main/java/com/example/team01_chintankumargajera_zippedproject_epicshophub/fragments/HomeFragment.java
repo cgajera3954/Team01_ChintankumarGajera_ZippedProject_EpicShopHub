@@ -1,5 +1,6 @@
 package com.example.team01_chintankumargajera_zippedproject_epicshophub.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,10 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
+
+
+     ProgressDialog progressDialog;
+
     // Category RecyclerView
     RecyclerView catRecyclerview, newProductRecyclerview, popularRecyclerview;
     CategoryAdapter categoryAdapter;
@@ -49,6 +54,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+
+        progressDialog = new ProgressDialog(getActivity()); // Corrected the assignment operator here
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
         popularRecyclerview = root.findViewById(R.id.popular_rec);
@@ -62,6 +70,12 @@ public class HomeFragment extends Fragment {
         slideModels.add(new SlideModel(R.drawable.banner2, "Discount On Perfume", ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.banner3, "70% OFF", ScaleTypes.CENTER_CROP));
         imageSlider.setImageList(slideModels);
+
+
+        progressDialog.setTitle("Final Project : ECommerce App");
+        progressDialog.setMessage("Please Wait..");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
 
         // Category
         setupCategoryRecyclerView();
@@ -111,6 +125,7 @@ public class HomeFragment extends Fragment {
                         CategoryModel categoryModel = document.toObject(CategoryModel.class);
                         categoryModelList.add(categoryModel);
                         categoryAdapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 } else {
                     Toast.makeText(getActivity(), "Error: " + task.getException(), Toast.LENGTH_SHORT).show();
@@ -128,6 +143,7 @@ public class HomeFragment extends Fragment {
                         NewProductsModel newProductsModel = document.toObject(NewProductsModel.class);
                         newProductsModelList.add(newProductsModel);
                         newProductsAdapter.notifyDataSetChanged();
+
                     }
                 } else {
                     Toast.makeText(getActivity(), "Error: " + task.getException(), Toast.LENGTH_SHORT).show();
