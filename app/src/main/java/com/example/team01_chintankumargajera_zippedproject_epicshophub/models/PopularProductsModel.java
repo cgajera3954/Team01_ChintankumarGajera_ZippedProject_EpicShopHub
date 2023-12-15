@@ -1,6 +1,8 @@
 package com.example.team01_chintankumargajera_zippedproject_epicshophub.models;
 
-public class PopularProductsModel {
+import java.io.Serializable;
+
+public class PopularProductsModel implements Serializable {
 
     private String description;
     private String name;

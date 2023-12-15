@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.NewProductsModel;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.PopularProductsModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DetailedActivity extends AppCompatActivity {
@@ -27,6 +28,10 @@ public class DetailedActivity extends AppCompatActivity {
 
 
     NewProductsModel newProductsModel = null;
+    //Popular Products
+
+
+    PopularProductsModel popularProductsModel = null;
     private FirebaseFirestore firestore;
 
 
@@ -47,6 +52,10 @@ public class DetailedActivity extends AppCompatActivity {
         if(obj instanceof NewProductsModel){
 
             newProductsModel = (NewProductsModel) obj;
+
+        }else if (obj instanceof PopularProductsModel){
+
+            popularProductsModel= (PopularProductsModel) obj;
 
         }
 
@@ -75,6 +84,21 @@ public class DetailedActivity extends AppCompatActivity {
             price.setText(String.valueOf(newProductsModel.getPrice()));
             name.setText(newProductsModel.getName());
         }
+
+        // Popular Products
+
+        if (popularProductsModel != null) {
+            // Load and display the image using Glide
+            Glide.with(getApplicationContext()).load(popularProductsModel.getImg_url()).into(detailedImg);
+
+            // Set text for TextViews
+            name.setText(popularProductsModel.getName());
+            rating.setText(popularProductsModel.getRating()); // Assuming "getRating()" returns a float value
+            description.setText(popularProductsModel.getDescription());
+            price.setText(String.valueOf(popularProductsModel.getPrice()));
+            name.setText(popularProductsModel.getName());
+        }
+
 
 
 
