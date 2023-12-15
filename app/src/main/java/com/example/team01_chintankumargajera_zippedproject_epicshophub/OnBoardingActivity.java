@@ -21,12 +21,12 @@ public class OnBoardingActivity extends AppCompatActivity {
 
     ViewPager viewPager;
     LinearLayout dotsLayout;
-
-    Button btn;
+    Button btn,btnNext;
     SliderAdapter sliderAdapter;
     TextView[] dots;
-
     Animation animation;
+    int currentPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
         btn = findViewById(R.id.get_started_btn);
-
+        btnNext = findViewById(R.id.next_btn);
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
 
@@ -53,8 +53,20 @@ public class OnBoardingActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OnBoardingActivity.this,RegistrationActivity.class));
+                startActivity(new Intent(OnBoardingActivity.this,LoginActivity.class));
                 finish();
+            }
+        });
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentPosition < dots.length - 1) {
+                    viewPager.setCurrentItem(currentPosition + 1);
+                } else {
+                    startActivity(new Intent(OnBoardingActivity.this, LoginActivity.class));
+                    finish();
+                }
             }
         });
 
@@ -76,6 +88,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         {
             dots[position].setTextColor(getResources().getColor(R.color.pink));
         }
+        currentPosition = position;
     }
 
     ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
