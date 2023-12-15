@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters.SliderAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class OnBoardingActivity extends AppCompatActivity {
 
@@ -30,6 +31,13 @@ public class OnBoardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Check User logged or not
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            startActivity(new Intent(OnBoardingActivity.this, MainActivity.class));
+            finish();
+        }
+
         //hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_on_boarding);
