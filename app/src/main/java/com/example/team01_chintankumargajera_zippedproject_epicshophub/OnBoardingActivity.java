@@ -3,6 +3,7 @@ package com.example.team01_chintankumargajera_zippedproject_epicshophub;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -49,7 +50,13 @@ public class OnBoardingActivity extends AppCompatActivity {
         //Call Adapter
         sliderAdapter = new SliderAdapter(this);
         viewPager.setAdapter(sliderAdapter);
-
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OnBoardingActivity.this,RegistrationActivity.class));
+                finish();
+            }
+        });
 
     }
 
