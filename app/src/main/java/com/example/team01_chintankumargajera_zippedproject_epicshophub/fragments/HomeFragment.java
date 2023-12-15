@@ -10,13 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters.CategoryAdapter;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters.NewProductsAdapter;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.CategoryModel;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.NewProductsModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,10 +38,15 @@ public class HomeFragment extends Fragment {
 
     // Category RecyclerView
 
-    RecyclerView catRecyclerview;
+    RecyclerView catRecyclerview , newProductRecyclerview;
     CategoryAdapter categoryAdapter;
     List<CategoryModel>categoryModelList;
 
+// New Products recyclerview
+
+
+    NewProductsAdapter newProductsAdapter;
+    List<NewProductsModel> newProductsModelList;
 
 
     //FireStore
@@ -49,8 +57,14 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View root = inflater.inflate(R.layout.fragment_home, container , false);
-        catRecyclerview = root.findViewById(R.id.rec_category);
 
+
+
+
+
+
+        catRecyclerview = root.findViewById(R.id.rec_category);
+        newProductRecyclerview = root.findViewById(R.id.new_product_rec);
 
 
         db = FirebaseFirestore.getInstance();
@@ -94,14 +108,43 @@ public class HomeFragment extends Fragment {
                             }
                         }else{
 
+                            Toast.makeText(getActivity(), ""+task.getException(),Toast.LENGTH_SHORT).show();
+
+
                         }
                     }
                 });
 
 
 
+        //New Products
+
+        newProductRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        newProductsModelList = new ArrayList<>();
+        newProductsAdapter = new NewProductsAdapter(getContext(), newProductsModelList);
+        newProductRecyclerview.setAdapter(newProductsAdapter);
+
+        db.collection("NewProducts")
+                .get()
+
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
 
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                NewProductsModel newProductsModel= document.toObject(NewProductsModel.class);
+                                newProductsModelList.add(newProductsModel);
+                                newProductsAdapter.notifyDataSetChanged();
+                            }
+                        }else{
+
+                            Toast.makeText(getActivity(), ""+task.getException(),Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
 
 
         return root;
