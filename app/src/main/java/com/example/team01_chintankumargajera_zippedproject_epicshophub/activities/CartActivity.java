@@ -98,4 +98,10 @@ public class CartActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }
