@@ -3,10 +3,17 @@ package com.example.team01_chintankumargajera_zippedproject_epicshophub.activiti
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters.MyCartAdapter;
@@ -26,6 +33,11 @@ import java.util.Objects;
 
 public class CartActivity extends AppCompatActivity {
 
+    int overAllTotalAmount;
+
+    TextView overAllAmount;
+
+    Button buyNowBtn;
     Toolbar toolbar;
     RecyclerView recyclerView;
     List<MyCartModel> cartModelList;
@@ -41,9 +53,14 @@ public class CartActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        overAllAmount = findViewById(R.id.overAllAmount);
+        buyNowBtn = findViewById(R.id.buy_now);
+
         toolbar = findViewById(R.id.my_cart_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("MyTotalAmount"));
 
         recyclerView = findViewById(R.id.cart_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -66,5 +83,19 @@ public class CartActivity extends AppCompatActivity {
                 }
             }
         });
+
+        buyNowBtn.setOnClickListener(view->{
+            startActivity(new Intent(CartActivity.this,AddressActivity.class));
+
+        });
     }
+
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int totalBill = intent.getIntExtra("totalAmount",0);
+            overAllAmount.setText("Total Price : $"+totalBill);
+        }
+    };
+
 }

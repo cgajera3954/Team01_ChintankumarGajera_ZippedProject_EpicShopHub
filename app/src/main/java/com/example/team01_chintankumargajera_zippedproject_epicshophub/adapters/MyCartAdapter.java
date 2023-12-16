@@ -1,6 +1,7 @@
 package com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -24,6 +26,8 @@ public class MyCartAdapter extends  RecyclerView.Adapter<MyCartAdapter.ViewHolde
     private Context context;
 
     private List<MyCartModel> list;
+
+    int totalAmount = 0;
 
     public MyCartAdapter(Context context, List<MyCartModel> list) {
         this.context = context;
@@ -46,6 +50,13 @@ public class MyCartAdapter extends  RecyclerView.Adapter<MyCartAdapter.ViewHolde
         holder.totalPrice.setText("$" + list.get(position).getTotalPrice());
         holder.totalQuantity.setText(list.get(position).getTotalQuantity());
 
+
+        //Total amount pass to cart activity
+        totalAmount = totalAmount + list.get(position).getTotalPrice();
+        Intent intent = new Intent("MyTotalAmount");
+        intent.putExtra("totalAmount", totalAmount);
+
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override

@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_cart_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="#8ff7fd"
         app:title="My Cart"
         android:minHeight="?attr/actionBarSize"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/overAllAmount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#8ff7fd"
@@ -41,7 +41,7 @@
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/overAllAmount"
         android:layout_height="wrap_content"
         tools:listitem="@layout/my_cart_item"
         />
