@@ -45,6 +45,9 @@ public class CartActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
 
+    double amount = 0.0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +88,10 @@ public class CartActivity extends AppCompatActivity {
         });
 
         buyNowBtn.setOnClickListener(view->{
-            startActivity(new Intent(CartActivity.this,AddressActivity.class));
 
+            Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
+            intent.putExtra("amount",amount);
+            startActivity(intent);
         });
     }
 
@@ -95,6 +100,7 @@ public class CartActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             int totalBill = intent.getIntExtra("totalAmount",0);
             overAllAmount.setText("Total Price : $"+totalBill);
+            amount = (double) totalBill;
         }
     };
 
@@ -103,5 +109,7 @@ public class CartActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+
 
 }

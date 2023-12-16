@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
     // Category RecyclerView
     RecyclerView catRecyclerview, newProductRecyclerview, popularRecyclerview;
     CategoryAdapter categoryAdapter;
-    List<CategoryModel> categoryModelList;
+//    List<CategoryModel> categoryModelList;
 
     // New Products RecyclerView
     NewProductsAdapter newProductsAdapter;
@@ -61,35 +61,35 @@ public class HomeFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(getActivity());
-        catRecyclerview = root.findViewById(R.id.rec_category);
+//        catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
         popularRecyclerview = root.findViewById(R.id.popular_rec);
 
-        catShowAll = root.findViewById(R.id.category_see_all);
-        popularShowAll = root.findViewById(R.id.popular_see_all);
-        newProductShowAll = root.findViewById(R.id.newProducts_see_all);
+//        catShowAll = root.findViewById(R.id.category_see_all);
+//        popularShowAll = root.findViewById(R.id.popular_see_all);
+//        newProductShowAll = root.findViewById(R.id.newProducts_see_all);
 
-        catShowAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ShowAllActivity.class);
-                startActivity(intent);
-            }
-        });
-        newProductShowAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ShowAllActivity.class);
-                startActivity(intent);
-            }
-        });
-        popularShowAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ShowAllActivity.class);
-                startActivity(intent);
-            }
-        });
+//        catShowAll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        newProductShowAll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        popularShowAll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         // Image slider
         ImageSlider imageSlider = root.findViewById(R.id.image_slider);
@@ -105,7 +105,7 @@ public class HomeFragment extends Fragment {
         progressDialog.show();
 
         // Category
-        setupCategoryRecyclerView();
+//        setupCategoryRecyclerView();
 
         // New Products
         setupNewProductsRecyclerView();
@@ -118,10 +118,10 @@ public class HomeFragment extends Fragment {
 
     private void setupCategoryRecyclerView() {
         catRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
-        categoryModelList = new ArrayList<>();
-        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList);
+//        categoryModelList = new ArrayList<>();
+//        categoryAdapter = new CategoryAdapter(getContext(), categoryModelList);
         catRecyclerview.setAdapter(categoryAdapter);
-        fetchCategories();
+//        fetchCategories();
     }
 
     private void setupNewProductsRecyclerView() {
@@ -147,7 +147,7 @@ public class HomeFragment extends Fragment {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         CategoryModel categoryModel = document.toObject(CategoryModel.class);
-                        categoryModelList.add(categoryModel);
+//                        categoryModelList.add(categoryModel);
                         categoryAdapter.notifyDataSetChanged();
                         progressDialog.dismiss();
                     }
@@ -167,6 +167,7 @@ public class HomeFragment extends Fragment {
                         NewProductsModel newProductsModel = document.toObject(NewProductsModel.class);
                         newProductsModelList.add(newProductsModel);
                         newProductsAdapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 } else {
                     Toast.makeText(getActivity(), "Error: " + task.getException(), Toast.LENGTH_SHORT).show();
@@ -184,6 +185,7 @@ public class HomeFragment extends Fragment {
                         PopularProductsModel popularProductsModel = document.toObject(PopularProductsModel.class);
                         popularProductsModelList.add(popularProductsModel);
                         popularProductsAdapter.notifyDataSetChanged();
+                        progressDialog.dismiss();
                     }
                 } else {
                     Toast.makeText(getActivity(), "Error: " + task.getException(), Toast.LENGTH_SHORT).show();

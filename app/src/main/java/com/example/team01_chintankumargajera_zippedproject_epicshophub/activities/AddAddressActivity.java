@@ -81,7 +81,6 @@ public class AddAddressActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                         Toast.makeText(getApplicationContext(), "Address Added", Toast.LENGTH_SHORT).show();
-                                        onBackPressed();
                                 }
                             });
                 } else {

@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:background="#8ff7fd"
         android:gravity="center"
-        android:text="Total Price : $40"
+        android:text="Total Price : $0"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

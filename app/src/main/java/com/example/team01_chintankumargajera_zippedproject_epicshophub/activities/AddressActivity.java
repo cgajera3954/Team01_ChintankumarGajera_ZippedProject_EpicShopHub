@@ -15,6 +15,8 @@ import com.example.team01_chintankumargajera_zippedproject_epicshophub.R;
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.adapters.AddressAdapter;
 
 import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.AddressModel;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.NewProductsModel;
+import com.example.team01_chintankumargajera_zippedproject_epicshophub.models.PopularProductsModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,6 +57,10 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Get Data from detailed activity
+        Object obj = getIntent().getSerializableExtra("item");
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         addressModelList = new ArrayList<>();
         addressAdapter = new AddressAdapter(getApplicationContext(), addressModelList, this);
@@ -81,6 +87,22 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
             public void onClick(View v) {
                 startActivity(new Intent(AddressActivity.this, AddAddressActivity.class));
             }
+        });
+
+        paymentBtn.setOnClickListener(view -> {
+
+            double amount = 0.0;
+            if(obj instanceof NewProductsModel){
+                NewProductsModel newProductsModel =(NewProductsModel) obj;
+                amount = newProductsModel.getPrice();
+            }
+            if(obj instanceof PopularProductsModel){
+                PopularProductsModel popularProductsModel =(PopularProductsModel) obj;
+                amount = popularProductsModel.getPrice();
+            }
+            Intent intent = new Intent(AddressActivity.this, PaymentActivity.class);
+            intent.putExtra("amount",amount);
+            startActivity(intent);
         });
     }
 

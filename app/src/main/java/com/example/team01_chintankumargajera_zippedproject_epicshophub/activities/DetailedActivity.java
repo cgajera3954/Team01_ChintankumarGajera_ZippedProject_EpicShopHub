@@ -147,7 +147,6 @@ public class DetailedActivity extends AppCompatActivity {
 
         }
 
-
         addToCart.setOnClickListener(view -> {
             addToCart();
         });
@@ -179,7 +178,14 @@ public class DetailedActivity extends AppCompatActivity {
         });
 
         buyNow.setOnClickListener(view->{
-            startActivity(new Intent(DetailedActivity.this,AddressActivity.class));
+            Intent intent = new Intent(DetailedActivity.this, AddressActivity.class);
+            if(newProductsModel!=null){
+                intent.putExtra("item", newProductsModel);
+            }
+            if(popularProductsModel!=null){
+                intent.putExtra("item", popularProductsModel);
+            }
+            startActivity(intent);
         });
     }
 

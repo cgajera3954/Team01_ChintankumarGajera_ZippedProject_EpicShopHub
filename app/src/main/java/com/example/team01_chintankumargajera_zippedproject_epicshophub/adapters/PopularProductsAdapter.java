@@ -41,7 +41,7 @@ public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProducts
         PopularProductsModel model = list.get(position);
         Glide.with(context).load(model.getImg_url()).into(holder.popularImg);
         holder.popularName.setText(model.getName());
-        holder.popularPrice.setText(String.valueOf(model.getPrice()));
+        holder.popularPrice.setText("$"+ model.getPrice());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

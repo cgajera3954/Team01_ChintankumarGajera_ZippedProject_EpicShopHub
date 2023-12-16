@@ -47,7 +47,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
 
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.newImg);
         holder.newName.setText(list.get(position).getName());
-        holder.newPrice.setText(String.valueOf(list.get(position).getPrice()));
+        holder.newPrice.setText("$"+ list.get(position).getPrice());
 
 
 
