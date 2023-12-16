@@ -41,6 +41,12 @@
         <activity
             android:name=".activities.CartActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.AddAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddressActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
